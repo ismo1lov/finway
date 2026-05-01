@@ -18,10 +18,7 @@ export function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-      <motion.div 
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 2.8, duration: 0.8, ease: "easeOut" }}
+      <div 
         className="glass mx-auto flex max-w-6xl items-center justify-between rounded-full pl-2 pr-3 py-2 sm:pl-2 sm:pr-3"
       >
         <a href="#top" className="group relative flex items-center gap-2">
@@ -62,7 +59,7 @@ export function Header() {
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
-      </motion.div>
+      </div>
 
       {open && (
         <div className="glass-strong mx-auto mt-2 max-w-6xl rounded-2xl p-4 md:hidden animate-fade-in">

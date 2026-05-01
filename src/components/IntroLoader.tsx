@@ -32,8 +32,12 @@ export function IntroLoader() {
           key="intro"
           className="fixed inset-0 z-[100] grid place-items-center"
           style={{ background: "var(--background)" }}
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.06, filter: "blur(8px)" }}
+          initial={{ opacity: 1, clipPath: "circle(150% at 50% 50%)" }}
+          animate={{ opacity: 1, clipPath: "circle(150% at 50% 50%)" }}
+          exit={{ 
+            clipPath: "circle(0% at 50% 50%)",
+            transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } 
+          }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Soft brand glow */}

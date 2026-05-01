@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import logo from "@/assets/finway-logo.png";
+import logoIcon from "@/assets/logo-icon.png";
 
 export function Preloader() {
   const [loading, setLoading] = useState(true);
@@ -16,10 +17,24 @@ export function Preloader() {
     <AnimatePresence>
       {loading && (
         <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
+          initial={{ opacity: 1, clipPath: "circle(150% at 50% 50%)" }}
+          animate={{ opacity: 1, clipPath: "circle(150% at 50% 50%)" }}
+          exit={{ 
+            clipPath: "circle(0% at 50% 50%)",
+            transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } 
+          }}
           className="fixed inset-0 z-[1000] flex items-center justify-center bg-white"
         >
+          {/* Background Icon */}
+          <motion.img
+            src={logoIcon}
+            alt=""
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1.2, opacity: 0.05, rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute left-1/2 top-1/2 -z-10 w-[400px] -translate-x-1/2 -translate-y-1/2 grayscale"
+          />
+
           <div className="relative">
             {/* Glow Effect */}
             <motion.div

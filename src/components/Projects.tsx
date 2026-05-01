@@ -6,6 +6,7 @@ import malika from "@/assets/malika.png";
 import azizbek from "@/assets/azizbek.png";
 import dilnoza from "@/assets/dilnoza.png";
 import sardor from "@/assets/sardor.png";
+import logoIcon from "@/assets/logo-icon.png";
 
 const projects = [
   {
@@ -71,31 +72,45 @@ export function Projects() {
                 key={p.id}
                 variants={itemVariants}
                 onClick={() => setSelectedGrad(p.id)}
-                className={`group relative cursor-pointer overflow-hidden rounded-[2rem] bg-muted h-72 sm:h-80 md:h-[320px] ${colSpan}`}
+                className={`group relative cursor-pointer overflow-hidden rounded-[2.5rem] bg-[#0c0c0c] h-80 sm:h-96 md:h-[400px] ${colSpan} border border-white/5`}
               >
+                {/* Brand Icon Background */}
+                <img 
+                  src={logoIcon} 
+                  alt="" 
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 opacity-[0.07] grayscale transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12" 
+                />
+
+                {/* Glow Effect */}
+                <div 
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full opacity-20 blur-[80px]"
+                  style={{ background: "var(--brand)" }}
+                />
+
                 <img
                   src={p.img}
                   alt={p.title}
                   loading="lazy"
-                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="relative z-10 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                 />
+                
                 <div
-                  className="absolute inset-0"
+                  className="absolute inset-0 z-20"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)",
+                      "linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%)",
                   }}
                 />
 
-                <div className="absolute right-6 top-6 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/20 text-white backdrop-blur-sm transition-colors group-hover:bg-white group-hover:text-black">
+                <div className="absolute right-6 top-6 z-30 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-brand/40 text-brand backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-brand group-hover:border-brand group-hover:scale-110">
                   <ArrowRight className="h-5 w-5 -rotate-45" />
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 p-8 sm:p-10 text-white">
-                  <h3 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+                <div className="absolute inset-x-0 bottom-0 z-30 p-8 sm:p-10 text-white">
+                  <h3 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
                     {p.title}
                   </h3>
-                  <p className="mt-3 max-w-md text-sm text-white/70">
+                  <p className="mt-2 max-w-xs text-sm text-white/60 font-medium">
                     {p.tag}
                   </p>
                 </div>
@@ -118,14 +133,27 @@ export function Projects() {
             </button>
 
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="relative h-64 md:h-full min-h-[300px]">
-                <img src={activeGrad.img} alt={activeGrad.title} className="h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent md:hidden" />
+              <div className="relative h-64 md:h-full min-h-[300px] bg-[#0c0c0c] overflow-hidden">
+                {/* Brand Icon Background */}
+                <img 
+                  src={logoIcon} 
+                  alt="" 
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 opacity-[0.05] grayscale" 
+                />
+
+                {/* Glow Effect */}
+                <div 
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full opacity-20 blur-[80px]"
+                  style={{ background: "var(--brand)" }}
+                />
+
+                <img src={activeGrad.img} alt={activeGrad.title} className="relative z-10 h-full w-full object-cover object-center" />
+                <div className="absolute inset-0 z-20 bg-gradient-to-t from-card/80 to-transparent md:hidden" />
               </div>
               <div className="flex flex-col justify-center p-8 sm:p-12">
                 <Quote className="h-10 w-10 text-brand opacity-20" style={{ color: "var(--brand)" }} />
                 <h3 className="mt-4 font-display text-3xl font-bold">{activeGrad.title}</h3>
-                <p className="mt-1 text-sm font-medium text-brand" style={{ color: "var(--brand)" }}>{activeGrad.tag}</p>
+                <p className="mt-1 text-sm font-medium text-foreground/60">{activeGrad.tag}</p>
                 <p className="mt-6 text-base leading-relaxed text-foreground/70 italic">
                   "{activeGrad.review}"
                 </p>

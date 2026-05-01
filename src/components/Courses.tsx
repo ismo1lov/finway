@@ -124,7 +124,7 @@ export function Courses() {
                 className="mt-10 flex w-full items-center justify-center gap-2 rounded-2xl bg-brand py-4 text-sm font-bold text-primary-foreground shadow-lg transition-transform hover:scale-[1.02]"
                 style={{ background: "var(--brand)", boxShadow: "var(--glow-brand)" }}
               >
-                Hozir Ro'yxatdan O'tish
+                Biz bilan bog'lanish
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>

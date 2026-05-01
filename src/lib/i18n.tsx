@@ -9,7 +9,7 @@ const dict = {
     "nav.courses": "Kurslarimiz",
     "nav.projects": "Bitiruvchilar",
     "nav.contact": "Aloqa",
-    "nav.start": "Ro'yxatdan o'tish",
+    "nav.start": "Biz bilan bog'lanish",
 
     "hero.eyebrow": "Professional buxgalteriya o'quv markazi",
     "hero.title.1": "Buxgalteriyani",
@@ -17,7 +17,7 @@ const dict = {
     "hero.title.2": "darajada kafolati bilan o'rgan!",
     "hero.subtitle":
       "1300+ o'quvchi. 1000+ ish bilan ta'minlangan. Amaliyotchi buxgalterlar sizni o'qitadi — real bilim, real natija.",
-    "hero.cta.primary": "Ro'yxatdan o'tish",
+    "hero.cta.primary": "Biz bilan bog'lanish",
     "hero.cta.secondary": "Kurslarni ko'rish",
     "hero.stat.students": "O'quvchilar",
     "hero.stat.courses": "Kurslar",
@@ -60,14 +60,14 @@ const dict = {
     "reviews.eyebrow": "Sharhlar",
     "reviews.title": "O'quvchilarimiz nima deyishadi",
     "review.1.text":
-      "Finway menga nafaqat texnik ko'nikmalarni, balki muammolarni hal qilish uslubini ham o'rgatdi. Hozir xalqaro kompaniyada ishlayman.",
-    "review.1.role": "Frontend Developer",
+      "Finway menga buxgalteriya asoslarini va balans hisobotlarini to'g'ri yuritishni o'rgatdi. Hozirda yirik ishlab chiqarish korxonasida ishlayapman.",
+    "review.1.role": "Buxgalter",
     "review.2.text":
-      "Mentorlar har doim qo'llab-quvvatlashdi. Loyihalar real va portfoliomga juda yordam berdi.",
-    "review.2.role": "UX Designer",
+      "1C dasturi bo'yicha olgan bilimlarim juda amaliy bo'ldi. Mentorlar har qanday savolimga javob berishga tayyor turishdi.",
+    "review.2.role": "1C dasturchisi",
     "review.3.text":
-      "Kurs tugagach 2 oy ichida ishga joylashdim. Bu yerda olgan bilim va aloqalar bebaho.",
-    "review.3.role": "Data Analyst",
+      "Super glavbux kursi menga soliq qonunchiligi va audit masalalarida chuqur bilim berdi. Kursdan so'ng darhol lavozimim ko'tarildi.",
+    "review.3.role": "Bosh buxgalter",
 
     "contact.eyebrow": "Aloqa",
     "contact.title": "Biz bilan bog'laning",
@@ -79,6 +79,19 @@ const dict = {
     "contact.form.submit": "Yuborish",
     "contact.info.phone": "Telefon",
     "contact.info.email": "Email",
+
+    "faq.eyebrow": "FAQ",
+    "faq.title": "Tez-tez so'raladigan savollar",
+    "faq.q1": "Hech qanday bilimim yo'q, kurs menga mosmi?",
+    "faq.a1": "\"Noldan Balasgacha\" kursimiz aynan siz uchun. Mutlaqo noldan boshlanadi. Avvalgi bilim talab qilinmaydi. O'qituvchilarimiz har bir o'quvchi bilan individual ishlaydi.",
+    "faq.q2": "Qaysi kursni tanlashim kerak?",
+    "faq.a2": "Tajribasiz bo'lsangiz — \"Noldan Balasgacha\" (4 mln). 1C o'rganmoqchi bo'lsangiz — \"1C Kursi\" (3 mln). Bosh buxgalter bo'lmoqchi bo'lsangiz — \"Super Glavbux\" (10 mln). Aniq ma'lumot uchun +998 95 100 01 71 ga qo'ng'iroq qiling.",
+    "faq.q3": "Ish topishda yordam berasizlarmi?",
+    "faq.a3": "Ha. Biz 1000+ o'quvchini ish bilan ta'minlaganmiz. Kurs bitirganidan keyin rezyume tayyorlash, hamkor kompaniyalarga tavsiya qilish va intervyuga tayyorlashda yordam beramiz.",
+    "faq.q4": "Bo'lib to'lash imkoni bormi?",
+    "faq.a4": "Ha. Barcha kurslarda bo'lib to'lash imkoni bor. Noldan Balasgacha: 1 333 000 × 3 oy. 1C Kursi: 1 000 000 × 3 oy. Super Glavbux: 3 333 000 × 3 oy.",
+    "faq.q5": "Yoqmasa pul qaytarasizlarmi?",
+    "faq.a5": "Ha. Birinchi darslar yoqmasa — hech qanday savol bermay to'liq pul qaytaramiz. Siz hech qanday risk ko'rmasligingiz kerak.",
 
     "footer.tagline": "Zamonaviy ta'lim — kuchli kelajak.",
     "footer.contact": "BOG'LANISH UCHUN",

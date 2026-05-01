@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { ThemeProvider } from "next-themes";
 
 import appCss from "../styles.css?url";
 
@@ -57,12 +58,14 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {children}
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>

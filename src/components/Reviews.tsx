@@ -1,6 +1,7 @@
 import { useI18n } from "@/lib/i18n";
 import { Stagger, Item, itemVariants } from "./Reveal";
 import { Quote, Star } from "lucide-react";
+import { Meteors } from "./ui/meteors";
 
 const reviews = [
   { name: "Aziza R.", role: "review.1.role" as const, text: "review.1.text" as const },
@@ -11,8 +12,9 @@ const reviews = [
 export function Reviews() {
   const { t } = useI18n();
   return (
-    <section id="reviews" className="relative bg-tint py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="reviews" className="relative overflow-hidden bg-tint py-24 sm:py-32">
+      <Meteors number={20} />
+      <div className="relative z-10 mx-auto max-w-6xl px-5">
         <Stagger className="mx-auto max-w-2xl text-center">
           <Item variants={itemVariants} className="text-xs uppercase tracking-[0.25em]" style={{ color: "var(--brand)" }}>
             {t("reviews.eyebrow")}

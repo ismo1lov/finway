@@ -7,6 +7,7 @@ import { Introduction } from "@/components/Introduction";
 import { Projects } from "@/components/Projects";
 import { Courses } from "@/components/Courses";
 import { Reviews } from "@/components/Reviews";
+import { FAQ } from "@/components/FAQ";
 import { CTA, Footer } from "@/components/CTA";
 import { FloatingAccents } from "@/components/FloatingAccents";
 import { ScrollProgress } from "@/components/Parallax";
@@ -56,6 +57,7 @@ function Index() {
             <Courses />
             <Projects />
             <Reviews />
+            <FAQ />
             <CTA />
           </main>
           <Footer />

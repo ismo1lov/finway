@@ -24,7 +24,7 @@ export function Reveal({
       variants={variants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, margin: "-80px" }}
+      viewport={{ once: true, margin: "-80px" }}
       transition={{ delay }}
     >
       {children}
@@ -48,7 +48,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, margin: "-80px" }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={{
         hidden: {},
         show: { transition: { delayChildren, staggerChildren } },

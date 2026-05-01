@@ -3,6 +3,7 @@ import { useI18n } from "@/lib/i18n";
 import { Reveal, Stagger, Item, itemVariants } from "./Reveal";
 import { ArrowRight, Mail, MapPin, Phone, Instagram, Send, X, Map as MapIcon } from "lucide-react";
 import logo from "@/assets/finway-logo.png";
+import logoIcon from "@/assets/logo-icon.png";
 
 export function CTA() {
   const { t } = useI18n();
@@ -15,7 +16,15 @@ export function CTA() {
   };
 
   return (
-    <section id="contact" className="relative bg-card py-24 sm:py-32">
+    <section id="contact" className="relative overflow-hidden bg-card py-24 sm:py-32">
+      {/* Background Watermark Icon */}
+      <div 
+        className="absolute -left-10 bottom-0 pointer-events-none -z-10 opacity-[0.03] -rotate-[15deg]"
+        style={{ width: "300px" }}
+      >
+        <img src={logoIcon} alt="" className="w-full h-auto grayscale" />
+      </div>
+
       <div className="mx-auto max-w-6xl px-5">
         <Stagger className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
@@ -65,14 +74,21 @@ export function CTA() {
 
               <button 
                 onClick={() => setShowBranches(true)}
-                className="group flex w-full items-center gap-4 text-left transition-colors hover:text-brand cursor-pointer"
+                className="group relative flex w-full items-center gap-4 rounded-2xl border border-transparent bg-brand/5 p-4 text-left transition-all duration-300 hover:border-brand/30 hover:bg-brand/10 hover:shadow-md cursor-pointer"
               >
-                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-tint text-brand group-hover:bg-brand/10 transition-colors" style={{ color: "var(--brand)" }}>
-                  <MapPin className="h-5 w-5" />
+                <div className="relative grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand/10 text-brand transition-transform group-hover:scale-110" style={{ color: "var(--brand)" }}>
+                  <MapPin className="h-6 w-6" />
+                  <span className="absolute -right-1.5 -top-1.5 flex h-3.5 w-3.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75"></span>
+                    <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-brand"></span>
+                  </span>
                 </div>
-                <div>
-                  <div className="text-sm font-semibold">Manzil</div>
-                  <div className="mt-0.5 text-sm text-foreground/60">Filialni tanlash uchun bosing</div>
+                <div className="flex-1">
+                  <div className="text-xs font-bold uppercase tracking-wider text-brand">Bizning manzil</div>
+                  <div className="mt-0.5 text-sm font-semibold text-foreground">Filialni tanlash va xaritani ko'rish</div>
+                </div>
+                <div className="rounded-full bg-brand/10 p-2 text-brand transition-all group-hover:bg-brand group-hover:text-primary-foreground group-hover:translate-x-1">
+                  <ArrowRight className="h-4 w-4" />
                 </div>
               </button>
             </Item>
