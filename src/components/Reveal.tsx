@@ -1,5 +1,6 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, type HTMLMotionProps } from "framer-motion";
 import type { ReactNode } from "react";
+import { useIsTouchDevice } from "@/hooks/use-touch-device";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 28, filter: "blur(6px)" },
@@ -17,7 +18,13 @@ export function Reveal({
   className?: string;
   as?: keyof typeof motion;
 }) {
+  const isTouch = useIsTouchDevice();
   const Comp = motion[Tag] as typeof motion.div;
+  
+  if (isTouch) {
+    return <Comp className={className} style={{ opacity: 1, filter: "none", transform: "none" }}>{children}</Comp>;
+  }
+
   return (
     <Comp
       className={className}
@@ -43,6 +50,12 @@ export function Stagger({
   delayChildren?: number;
   staggerChildren?: number;
 }) {
+  const isTouch = useIsTouchDevice();
+
+  if (isTouch) {
+    return <motion.div className={className}>{children}</motion.div>;
+  }
+
   return (
     <motion.div
       className={className}
@@ -59,5 +72,13 @@ export function Stagger({
   );
 }
 
-export const Item = motion.div;
+export function Item({ className, children, ...props }: HTMLMotionProps<"div">) {
+  const isTouch = useIsTouchDevice();
+  if (isTouch) {
+    const { variants, initial, whileInView, viewport, transition, ...rest } = props;
+    return <motion.div className={className} style={{ opacity: 1, filter: "none", transform: "none" }} {...rest}>{children}</motion.div>;
+  }
+  return <motion.div className={className} {...props}>{children}</motion.div>;
+}
+
 export const itemVariants = variants;

@@ -1,8 +1,13 @@
 import { useEffect, type ReactNode } from "react";
 import Lenis from "lenis";
+import { useIsTouchDevice } from "@/hooks/use-touch-device";
 
 export function SmoothScroll({ children }: { children: ReactNode }) {
+  const isTouch = useIsTouchDevice();
+
   useEffect(() => {
+    if (isTouch) return;
+
     const lenis = new Lenis({
       lerp: 0.05, // Lower value makes it slower and smoother
       smoothWheel: true,
@@ -34,7 +39,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       lenis.destroy();
       document.removeEventListener("click", onClick);
     };
-  }, []);
+  }, [isTouch]);
 
   return <>{children}</>;
 }

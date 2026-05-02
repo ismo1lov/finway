@@ -1,8 +1,10 @@
 import logoIcon from "@/assets/logo-icon.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useIsTouchDevice } from "@/hooks/use-touch-device";
 
 export function FloatingAccents() {
+  const isTouch = useIsTouchDevice();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -56,12 +58,11 @@ export function FloatingAccents() {
             width: icon.size,
             height: "auto",
             rotate: icon.rotate,
-            y: icon.y,
-            rotateZ: rotate,
+            y: isTouch ? 0 : icon.y,
+            rotateZ: isTouch ? 0 : rotate,
           }}
         />
       ))}
     </div>
   );
 }
-

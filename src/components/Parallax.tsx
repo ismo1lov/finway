@@ -1,5 +1,6 @@
 import { motion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { useRef, type ReactNode } from "react";
+import { useIsTouchDevice } from "@/hooks/use-touch-device";
 
 /** Wrap content to translate it on Y based on scroll progress (continuous parallax). */
 export function Parallax({
@@ -12,6 +13,7 @@ export function Parallax({
   speed?: number;
   className?: string;
 }) {
+  const isTouch = useIsTouchDevice();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -19,6 +21,11 @@ export function Parallax({
   });
   const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 20, mass: 0.4 });
   const y = useTransform(smooth, [0, 1], [speed, -speed]);
+  
+  if (isTouch) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div ref={ref} style={{ y } as { y: MotionValue<number> }} className={className}>
       {children}
@@ -28,8 +35,12 @@ export function Parallax({
 
 /** Top-of-page scroll progress bar (continuous indicator). */
 export function ScrollProgress() {
+  const isTouch = useIsTouchDevice();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 20, mass: 0.3 });
+  
+  if (isTouch) return null;
+
   return (
     <motion.div
       aria-hidden
