@@ -1,0 +1,61 @@
+/* ── Custom styles – Tailwind bilan qayta ishlanmaydi ── */
+.glass {
+  position: relative;
+  background-color: rgba(23, 23, 23, 0.4);
+  background-image: var(--glass-bg);
+  border: var(--glass-border);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: var(--shadow-glass);
+  isolation: isolate;
+}
+
+.glass-strong {
+  background-color: rgba(23, 23, 23, 0.7);
+  background-image: linear-gradient(135deg,
+      rgba(117, 148, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.05) 100%);
+  border: var(--glass-border);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: var(--shadow-glass);
+}
+
+.glow-brand {
+  box-shadow: var(--glow-brand);
+}
+
+.text-brand {
+  color: var(--brand);
+}
+
+.bg-hero {
+  background-image: var(--gradient-hero);
+}
+
+.bg-tint {
+  background-color: var(--brand-tint);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--brand) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--brand) 8%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.neon-float {
+  animation-name: neon-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.55)) drop-shadow(0 4px 18px color-mix(in oklab, var(--brand) 60%, transparent));
+}
+
+.animate-meteor-effect {
+  animation: meteor 5s linear infinite;
+}
