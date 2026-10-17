@@ -1,49 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n";
-import { Reveal, Stagger, Item, itemVariants } from "./Reveal";
-import { ArrowRight, X, Quote } from "lucide-react";
-import malika from "@/assets/malika.png";
-import azizbek from "@/assets/azizbek.png";
-import dilnoza from "@/assets/dilnoza.png";
-import sardor from "@/assets/sardor.png";
-import logoIcon from "@/assets/logo-icon.png";
+import { Stagger, Item, itemVariants } from "./Reveal";
+import { ArrowRight, X } from "lucide-react";
+import long from "@/assets/long.png";
+import long2 from "@/assets/long-2.png";
+import short from "@/assets/short.png";
+import short2 from "@/assets/short-2.png";
 
 const projects = [
-  {
-    id: 1,
-    img: malika,
-    tag: "Hozirda yirik ishlab chiqarish korxonasida bosh buxgalter",
-    title: "Malika Ahmedova",
-    review: "Finway Academy'da olgan bilimlarim hayotimni o'zgartirdi. Ustozlarim yordamida nafaqat nazariyani, balki amaliy buxgalteriyani ham mukammal o'rgandim. Hozirda yirik korxonada bosh buxgalter lavozimida ishlayapman."
-  },
-  {
-    id: 2,
-    img: azizbek,
-    tag: "1C dasturini mukammal o'rganib, xususiy firmada ish boshladi",
-    title: "Azizbek Karimov",
-    review: "1C dasturini o'rganish men uchun qiyin tuyulgandi, lekin bu yerda hammasi juda sodda tushuntirildi. Kursni tugatiboq ishga kirdim. Mentorlarga katta rahmat!"
-  },
-  {
-    id: 3,
-    img: dilnoza,
-    tag: "Noldan o'rganib, 3 oy ichida diplom va ishga ega bo'ldi",
-    title: "Dilnoza Mansurova",
-    review: "Buxgalteriya haqida hech qanday tushuncham yo'q edi. 3 oy ichida noldan balansgacha o'rgandim. Hozirda o'z ishimning ustasiman va yaxshi daromad topyapman."
-  },
-  {
-    id: 4,
-    img: sardor,
-    tag: "Super glavbux kursini bitirib, o'z konsaltingini ochdi",
-    title: "Sardor Olimov",
-    review: "Super glavbux kursi menga soliq optimallashtirish va murakkab hisob-kitoblarni o'rgatdi. O'z bilimlarimga ishonch hosil qilib, xususiy konsalting markazimni ochdim."
-  },
+  { id: 1, img: long, alt: "Finway bitiruvchisi 1", pos: "object-right" },
+  { id: 2, img: long2, alt: "Finway bitiruvchisi 2", pos: "object-center" },
+  { id: 3, img: short, alt: "Finway bitiruvchisi 3", pos: "object-center" },
+  { id: 4, img: short2, alt: "Finway bitiruvchisi 4", pos: "object-center" },
 ];
 
 export function Projects() {
   const { t } = useI18n();
-  const [selectedGrad, setSelectedGrad] = useState<number | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
-  const activeGrad = projects.find(p => p.id === selectedGrad);
+  const activeImage = projects.find(p => p.id === selectedId);
+
+  useEffect(() => {
+    if (selectedId === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedId(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selectedId]);
 
   return (
     <section id="projects" className="relative bg-card py-24 sm:py-32">
@@ -71,48 +55,18 @@ export function Projects() {
               <Item
                 key={p.id}
                 variants={itemVariants}
-                onClick={() => setSelectedGrad(p.id)}
+                onClick={() => setSelectedId(p.id)}
                 className={`group relative cursor-pointer overflow-hidden rounded-[2.5rem] bg-[#0c0c0c] h-80 sm:h-96 md:h-[400px] ${colSpan} border border-white/5`}
               >
-                {/* Brand Icon Background */}
-                <img 
-                  src={logoIcon} 
-                  alt="" 
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 opacity-[0.07] grayscale transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12" 
-                />
-
-                {/* Glow Effect */}
-                <div 
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full opacity-20 blur-[80px]"
-                  style={{ background: "var(--brand)" }}
-                />
-
                 <img
                   src={p.img}
-                  alt={p.title}
+                  alt={p.alt}
                   loading="lazy"
-                  className="relative z-10 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-                
-                <div
-                  className="absolute inset-0 z-20"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%)",
-                  }}
+                  className={`h-full w-full object-cover ${p.pos} transition-transform duration-700 group-hover:scale-[1.03]`}
                 />
 
-                <div className="absolute right-6 top-6 z-30 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-brand/40 text-brand backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-brand group-hover:border-brand group-hover:scale-110">
+                <div className="absolute right-6 top-6 z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-brand/40 text-brand backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-brand group-hover:border-brand group-hover:scale-110">
                   <ArrowRight className="h-5 w-5 -rotate-45" />
-                </div>
-
-                <div className="absolute inset-x-0 bottom-0 z-30 p-8 sm:p-10 text-white">
-                  <h3 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 max-w-xs text-sm text-white/60 font-medium">
-                    {p.tag}
-                  </p>
                 </div>
               </Item>
             );
@@ -120,53 +74,25 @@ export function Projects() {
         </Stagger>
       </div>
 
-      {/* Modal */}
-      {selectedGrad && activeGrad && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-md" onClick={() => setSelectedGrad(null)} />
-          <Reveal className="relative w-full max-w-3xl overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-2xl">
-            <button
-              onClick={() => setSelectedGrad(null)}
-              className="absolute right-6 top-6 z-10 grid h-10 w-10 place-items-center rounded-full bg-tint transition-colors hover:bg-brand/10"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="relative h-64 md:h-full min-h-[300px] bg-[#0c0c0c] overflow-hidden">
-                {/* Brand Icon Background */}
-                <img 
-                  src={logoIcon} 
-                  alt="" 
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 opacity-[0.05] grayscale" 
-                />
-
-                {/* Glow Effect */}
-                <div 
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full opacity-20 blur-[80px]"
-                  style={{ background: "var(--brand)" }}
-                />
-
-                <img src={activeGrad.img} alt={activeGrad.title} className="relative z-10 h-full w-full object-cover object-center" />
-                <div className="absolute inset-0 z-20 bg-gradient-to-t from-card/80 to-transparent md:hidden" />
-              </div>
-              <div className="flex flex-col justify-center p-8 sm:p-12">
-                <Quote className="h-10 w-10 text-brand opacity-20" style={{ color: "var(--brand)" }} />
-                <h3 className="mt-4 font-display text-3xl font-bold">{activeGrad.title}</h3>
-                <p className="mt-1 text-sm font-medium text-foreground/60">{activeGrad.tag}</p>
-                <p className="mt-6 text-base leading-relaxed text-foreground/70 italic">
-                  "{activeGrad.review}"
-                </p>
-                <button
-                  onClick={() => setSelectedGrad(null)}
-                  className="mt-10 rounded-xl bg-brand py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition-transform hover:scale-[1.02]"
-                  style={{ background: "var(--brand)", boxShadow: "var(--glow-brand)" }}
-                >
-                  Yopish
-                </button>
-              </div>
-            </div>
-          </Reveal>
+      {/* Lightbox */}
+      {activeImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md sm:p-6 animate-in fade-in duration-200"
+          onClick={() => setSelectedId(null)}
+        >
+          <img
+            src={activeImage.img}
+            alt={activeImage.alt}
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-10 w-[min(92vw,860px)] max-h-[85vh] rounded-2xl object-contain shadow-2xl animate-in fade-in zoom-in-95 duration-300"
+          />
+          <button
+            onClick={() => setSelectedId(null)}
+            aria-label="Yopish"
+            className="absolute right-5 top-5 z-20 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+          >
+            <X className="h-5 w-5" />
+          </button>
         </div>
       )}
     </section>
